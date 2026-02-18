@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Grade Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 80px;
+            background-color: #f4f4f4;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+            width: 100px;
+        }
+
+        button {
+            padding: 8px 15px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: darkblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Enter Marks of 5 Subjects</h2>
+
+    <input type="number" id="m1" placeholder="Subject 1"><br>
+    <input type="number" id="m2" placeholder="Subject 2"><br>
+    <input type="number" id="m3" placeholder="Subject 3"><br>
+    <input type="number" id="m4" placeholder="Subject 4"><br>
+    <input type="number" id="m5" placeholder="Subject 5"><br>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div id="result"></div>
+
+    <script>
+        function calculate() {
+
+            var m1 = parseFloat(document.getElementById("m1").value);
+            var m2 = parseFloat(document.getElementById("m2").value);
+            var m3 = parseFloat(document.getElementById("m3").value);
+            var m4 = parseFloat(document.getElementById("m4").value);
+            var m5 = parseFloat(document.getElementById("m5").value);
+
+            // Validate input
+            if (isNaN(m1) || isNaN(m2) || isNaN(m3) || isNaN(m4) || isNaN(m5)) {
+                alert("Please enter all marks correctly.");
+                return;
+            }
+
+            var total = m1 + m2 + m3 + m4 + m5;
+            var average = total / 5;
+            var grade;
+
+            if (average >= 90)
+                grade = "A+";
+            else if (average >= 80)
+                grade = "A";
+            else if (average >= 70)
+                grade = "B";
+            else if (average >= 60)
+                grade = "C";
+            else if (average >= 50)
+                grade = "D";
+            else
+                grade = "Fail";
+
+            document.getElementById("result").innerHTML =
+                "Total Marks: " + total + "<br>" +
+                "Average: " + average.toFixed(2) + "<br>" +
+                "Grade: " + grade;
+        }
+    </script>
+
+</body>
+</html>
